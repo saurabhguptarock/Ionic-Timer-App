@@ -1,0 +1,42 @@
+<ion-content padding>
+  <ion-item color="dark"
+    ><ion-label>Rest Duration</ion-label>
+    <ion-datetime
+      display-format="mm:ss"
+      placeholder="Tap Here"
+      [(ngModel)]="fullTime"
+    ></ion-datetime
+  ></ion-item>
+
+  <circle-progress
+    (click)="startTime()"
+    [percent]="percent"
+    [radius]="radius"
+    [maxPercent]="100"
+    [showTitle]="false"
+    [showSubtitle]="false"
+    [showUnits]="false"
+    [outerStrokeWidth]="16"
+    [outerStrokeColor]="'#8000ff'"
+    [showZeroOuterStroke]="false"
+    [backgroundStroke]="'#33003f'"
+    [backgroundStrokeWidth]="3"
+    [outerStrokeGradient]="true"
+    [outerStrokeGradientStopColor]="'#ff00cb'"
+    [showInnerStroke]="false"
+  ></circle-progress>
+
+  <p>{{ elapsed.h }}:{{ elapsed.m }}:{{ elapsed.s }}</p>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ng-container *ngIf="timer == false; else running">
+      <ion-fab-button (click)="startTime()">
+        <ion-icon name="play"></ion-icon>
+      </ion-fab-button>
+    </ng-container>
+    <ng-template #running
+      ><ion-fab-button (click)="stopTime()">
+        <ion-icon name="square"></ion-icon> </ion-fab-button
+    ></ng-template>
+  </ion-fab>
+</ion-content>
